@@ -1,0 +1,6 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions."fetch-news"]
+  schedule = "0 */6 * * *"
