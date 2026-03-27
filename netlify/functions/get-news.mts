@@ -20,18 +20,3 @@ export default async (req: Request) => {
 };
 
 export const config: Config = { path: "/api/news" };
-```
-
----
-
-## After committing both files, verify your repo root has these exact files:
-```
-netlify.toml          ← in root
-package.json          ← in root
-public/
-  index.html
-  articles.json
-netlify/
-  functions/
-    fetch-news.mts
-    get-news.mts
