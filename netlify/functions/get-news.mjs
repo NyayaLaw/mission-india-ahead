@@ -1,12 +1,11 @@
 import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/functions";
 
-export default async (req: Request) => {
+export default async (req) => {
   try {
     const store = getStore("news-cache");
     const data = await store.get("latest", { type: "json" });
     if (!data) {
-      return Response.json({ error: "News not cached yet." }, { status: 404 });
+      return Response.json({ error: "News not cached yet. Runs hourly." }, { status: 404 });
     }
     return Response.json(data, {
       headers: { "Cache-Control": "public, max-age=1800" },
@@ -16,4 +15,4 @@ export default async (req: Request) => {
   }
 };
 
-export const config: Config = { path: "/api/news" };
+export const config = { path: "/api/news" };
