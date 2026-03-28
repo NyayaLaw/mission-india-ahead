@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mission India Ahead — अग्रसर भारत</title>
+  <meta name="description" content="Rigorous legal and policy analysis across ten pillars of India's national renewal."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --sf:#D4500A;--sf2:#F47B30;--sf-faint:rgba(212,80,10,0.08);
+      --tri-s:#FF9933;--tri-g:#138808;
+      --gn:#14593D;--gn2:#1E8A5E;
+      --navy:#0A1628;--navy2:#0F2040;
+      --ink:#160F06;--ink2:#251A0D;
+      --cream:#FBF6EE;--parch:#F3EAD8;--ww:#FEFCF8;
+      --bdr:#E4D8C4;--bdr2:#CFC0A6;--muted:#7A6A52;--muted2:#9E8E76;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(22,15,6,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,153,51,0.12)}
+    .nav-inner{max-width:1360px;margin:0 auto;padding:0 2.5rem;height:62px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .nav-brand{text-decoration:none;display:flex;align-items:center;gap:.9rem}
+    .nav-tri-bar{display:block;width:4px;height:34px;background:linear-gradient(to bottom,var(--tri-s) 33.3%,rgba(255,255,255,0.9) 33.3%,rgba(255,255,255,0.9) 66.6%,var(--tri-g) 66.6%);border-radius:2px;flex-shrink:0}
+    .nav-brand-main{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.01em;line-height:1.15;display:block}
+    .nav-brand-main span{color:var(--sf2)}
+    .nav-brand-sub{font-size:.54rem;color:rgba(255,255,255,.3);letter-spacing:.18em;text-transform:uppercase;display:block;margin-top:2px}
+    .nav-links{display:flex;gap:1.75rem;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.77rem;font-weight:500;letter-spacing:.04em;transition:color .2s;position:relative;padding-bottom:3px}
+    .nav-links a::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:var(--sf2);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .nav-links a:hover{color:#fff}.nav-links a:hover::after{transform:scaleX(1)}
+    .live-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5eead4;background:rgba(94,234,212,.07);border:1px solid rgba(94,234,212,.18);padding:.25rem .65rem;border-radius:100px}
+    .live-dot{width:6px;height:6px;background:#5eead4;border-radius:50%;animation:blink 1.6s ease infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+    /* HERO — split layout */
+    .hero{min-height:100vh;background:var(--ink);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+    .hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 4rem 5rem;position:relative;z-index:3}
+    .hero-right{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+    /* The star: tricolour भारत */
+    .bharat-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .bharat-text{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(9rem,17vw,19rem);
+      font-weight:900;line-height:.95;letter-spacing:-.02em;
+      pointer-events:none;user-select:none;
+      background:linear-gradient(to bottom,
+        var(--tri-s) 0%,var(--tri-s) 33.33%,
+        rgba(255,255,255,.9) 33.33%,rgba(255,255,255,.9) 66.66%,
+        var(--tri-g) 66.66%,var(--tri-g) 100%
+      );
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 0 60px rgba(255,153,51,.2));
+      animation:risein 1.4s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes risein{from{opacity:0;transform:translateY(50px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+    /* Subtle chakra ring at the white band */
+    .bharat-chakra{
+      position:absolute;width:180px;height:180px;border-radius:50%;
+      border:1px solid rgba(0,0,128,.1);pointer-events:none;
+    }
+
+    /* Atmosphere glows */
+    .glow-s{position:absolute;top:-120px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,rgba(255,153,51,.1) 0%,transparent 70%);pointer-events:none}
+    .glow-g{position:absolute;bottom:-120px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(19,136,8,.07) 0%,transparent 70%);pointer-events:none}
+
+    /* Vertical divider */
+    .hero-divider{position:absolute;top:12%;bottom:12%;left:50%;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,153,51,.12) 25%,rgba(255,153,51,.12) 75%,transparent);z-index:4}
+
+    /* Hero copy */
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sf2);margin-bottom:1.75rem;animation:up .8s .2s cubic-bezier(.16,1,.3,1) both}
+    .eyebrow-line{display:inline-block;width:20px;height:1px;background:linear-gradient(to right,var(--tri-s),var(--tri-g))}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.2vw,4rem);font-weight:900;line-height:1.06;color:#fff;letter-spacing:-.02em;margin-bottom:1.5rem;animation:up .8s .35s cubic-bezier(.16,1,.3,1) both}
+    .hero h1 em{font-style:italic;font-weight:400;background:linear-gradient(135deg,var(--tri-s),var(--sf2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero h1 .sub{display:block;color:rgba(255,255,255,.28);font-weight:400;font-style:italic;font-size:.82em}
+    .hero-desc{font-size:.95rem;color:rgba(255,255,255,.48);max-width:440px;line-height:1.8;margin-bottom:2.5rem;animation:up .8s .5s cubic-bezier(.16,1,.3,1) both}
+    .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3.5rem;animation:up .8s .65s cubic-bezier(.16,1,.3,1) both}
+    @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    .btn-p{background:linear-gradient(135deg,var(--sf),var(--sf2));color:#fff;border:none;padding:.75rem 1.75rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.03em;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block;box-shadow:0 4px 20px rgba(212,80,10,.3)}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,80,10,.4)}
+    .btn-g{background:transparent;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.14);padding:.75rem 1.75rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+    .btn-g:hover{border-color:var(--sf2);color:var(--sf2)}
+
+    .stats-row{display:flex;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.025);width:fit-content;animation:up .8s .8s cubic-bezier(.16,1,.3,1) both}
+    .stat{padding:1rem 1.6rem;border-right:1px solid rgba(255,255,255,.07);text-align:center}
+    .stat:last-child{border-right:none}
+    .stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--sf2);line-height:1;display:block}
+    .stat-l{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);display:block;margin-top:.28rem}
+
+    /* TRICOLOUR RULE */
+    .tri-rule{height:4px;background:linear-gradient(to right,var(--tri-s) 33.33%,#fff 33.33%,#fff 66.66%,var(--tri-g) 66.66%)}
+
+    /* TICKER */
+    .ticker{background:var(--sf);padding:.55rem 0;overflow:hidden}
+    .ticker-track{display:flex;white-space:nowrap;animation:tick 55s linear infinite}
+    .ticker-track:hover{animation-play-state:paused}
+    .ticker-item{font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(22,15,6,.82);padding:0 2.5rem}
+    .ticker-item::before{content:'◆  ';color:rgba(0,0,0,.18)}
+    @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* SECTION */
+    .section{padding:4rem 2.5rem}
+    .section-inner{max-width:1360px;margin:0 auto}
+    .section-head{display:flex;align-items:center;gap:1.25rem;margin-bottom:2.5rem}
+    .section-label{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sf);white-space:nowrap}
+    .section-rule{flex:1;height:1px;background:linear-gradient(to right,var(--bdr),transparent)}
+
+    /* FEATURED */
+    .featured-section{background:var(--ww);border-bottom:1px solid var(--bdr)}
+    .featured-grid{display:grid;grid-template-columns:3fr 2fr;gap:1px;background:var(--bdr2);border-radius:12px;overflow:hidden;box-shadow:0 2px 24px rgba(0,0,0,.06)}
+    .feat-main{background:var(--ink);padding:2.75rem;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden;transition:background .25s}
+    .feat-main::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--tri-s),var(--tri-g))}
+    .feat-main::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--sf),var(--sf2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    .feat-main:hover{background:#1f1510}.feat-main:hover::after{transform:scaleX(1)}
+    .feat-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sf2);background:rgba(244,123,48,.12);border:1px solid rgba(244,123,48,.2);padding:.22rem .6rem;border-radius:3px;margin-bottom:1.25rem}
+    .feat-main .ft{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;line-height:1.22;color:#fff;margin-bottom:1rem;letter-spacing:-.01em}
+    .feat-main .fd{font-size:.875rem;color:rgba(255,255,255,.43);line-height:1.75;margin-bottom:1.5rem}
+    .feat-main .fm{font-size:.68rem;color:rgba(255,255,255,.26)}.feat-main .fm strong{color:var(--sf2);font-weight:600}
+    .feat-sides{display:flex;flex-direction:column;gap:1px}
+    .feat-side{background:var(--parch);padding:1.75rem;text-decoration:none;color:inherit;display:block;flex:1;transition:background .2s;position:relative}
+    .feat-side::before{content:'';position:absolute;left:0;top:22%;bottom:22%;width:2px;background:var(--bdr2)}
+    .feat-side:hover{background:#fff}
+    .feat-side .ft{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:.5rem}
+    .feat-side .fd{font-size:.77rem;color:var(--muted);line-height:1.6;margin-bottom:.4rem}
+    .feat-side .fm{font-size:.67rem;color:var(--muted2)}
+
+    /* PILLARS */
+    .pillars-section{background:var(--navy);padding:2.5rem 2.5rem}
+    .pillars-scroll{display:flex;gap:.7rem;overflow-x:auto;padding-bottom:.5rem;margin-top:1.5rem;scrollbar-width:none}
+    .pillars-scroll::-webkit-scrollbar{display:none}
+    .pillar-chip{flex-shrink:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:.9rem 1.2rem;cursor:pointer;transition:all .2s;text-align:center;min-width:128px}
+    .pillar-chip:hover,.pillar-chip.active{border-color:var(--sf2);background:rgba(244,123,48,.1)}
+    .pc-emoji{font-size:1.3rem;display:block;margin-bottom:.4rem}
+    .pc-name{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.75);display:block;margin-bottom:.2rem}
+    .pc-count{font-size:.58rem;color:var(--sf2);font-weight:700}
+
+    /* MAIN LAYOUT */
+    .main-layout{max-width:1360px;margin:0 auto;padding:4rem 2.5rem;display:grid;grid-template-columns:1fr 305px;gap:3.5rem}
+
+    /* TABS */
+    .content-tabs{display:flex;border-bottom:1px solid var(--bdr);margin-bottom:2rem}
+    .tab-btn{font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;padding:.8rem 1.5rem;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;color:var(--muted2);transition:all .2s;letter-spacing:.02em}
+    .tab-btn.active{color:var(--sf);border-bottom-color:var(--sf)}
+    .tab-btn:hover:not(.active){color:var(--ink)}
+    .tab-panel{display:none}.tab-panel.active{display:block}
+
+    /* CONTROLS */
+    .controls{display:flex;gap:.7rem;margin-bottom:1.75rem;flex-wrap:wrap}
+    .search-box{flex:1;min-width:180px;padding:.6rem .9rem .6rem 2.25rem;border:1.5px solid var(--bdr);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.875rem;color:var(--ink);outline:none;transition:border-color .15s;background:var(--ww) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A6A52' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") .72rem center no-repeat}
+    .search-box:focus{border-color:var(--sf)}
+    .sort-sel{padding:.6rem .9rem;border:1.5px solid var(--bdr);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.8rem;background:var(--ww);color:var(--ink);outline:none;cursor:pointer}
+    .filter-pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .pill{font-size:.68rem;font-weight:500;padding:.27rem .78rem;border:1px solid var(--bdr);border-radius:100px;background:var(--ww);color:var(--muted);cursor:pointer;transition:all .15s}
+    .pill:hover{border-color:var(--sf);color:var(--sf)}.pill.active{background:var(--sf);border-color:var(--sf);color:#fff}
+
+    /* ESSAY LIST */
+    .essay-list{display:flex;flex-direction:column}
+    .essay-item{display:grid;grid-template-columns:44px 1fr;gap:1.1rem;padding:1.55rem 0;border-bottom:1px solid var(--bdr);text-decoration:none;color:inherit;transition:all .2s;position:relative}
+    .essay-item:hover{padding-left:.75rem;padding-right:.75rem;margin:0 -1.5rem;border-bottom-color:transparent;background:var(--ww);border-radius:10px}
+    .ei-num{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--bdr2);line-height:1;padding-top:.1rem}
+    .ei-pillar{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sf);margin-bottom:.33rem}
+    .ei-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:.33rem;letter-spacing:-.01em}
+    .ei-summary{font-size:.81rem;color:var(--muted);line-height:1.65;margin-bottom:.55rem}
+    .ei-foot{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
+    .pub-tag{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.16rem .48rem;border-radius:3px}
+    .pub-organiser{background:#fff0e5;color:#943300}.pub-verdictum{background:#e6f4ef;color:#14593d}
+    .pub-print{background:#e6edf8;color:#1a3566}.pub-lawstreet{background:#f4eaf8;color:#5a1a6b}
+    .pub-default{background:var(--parch);color:var(--muted)}
+    .ei-meta{font-size:.68rem;color:var(--muted2)}
+    .no-results{text-align:center;padding:3rem;color:var(--muted2);font-size:.875rem}
+
+    /* NEWS */
+    .news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .news-card{background:var(--ww);border:1.5px solid var(--bdr);border-radius:10px;padding:1.2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.42rem;transition:all .2s;position:relative;overflow:hidden}
+    .news-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--tri-s),var(--tri-g));transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .news-card:hover{border-color:var(--sf);box-shadow:0 6px 24px rgba(0,0,0,.07);transform:translateY(-2px)}.news-card:hover::before{transform:scaleX(1)}
+    .nc-source{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sf)}
+    .nc-title{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;line-height:1.35;color:var(--ink)}
+    .nc-desc{font-size:.76rem;color:var(--muted);line-height:1.6;flex:1}
+    .nc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.2rem}
+    .nc-date{font-size:.62rem;color:var(--muted2)}.nc-pillar{font-size:.57rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gn2)}
+    .nc-trackers{display:flex;flex-wrap:wrap;gap:.22rem;margin-top:.3rem}
+    .nc-tracker{font-size:.55rem;font-weight:600;background:var(--sf-faint);border:1px solid rgba(212,80,10,.12);color:var(--sf);padding:.1rem .38rem;border-radius:3px;letter-spacing:.04em}
+    .news-loading{grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted2);font-size:.875rem}
+    .show-more-btn{width:100%;margin-top:1.2rem;padding:.68rem;background:transparent;border:1.5px solid var(--bdr);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s}
+    .show-more-btn:hover{border-color:var(--sf);color:var(--sf)}
+
+    /* TRACKERS */
+    .trackers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .tracker-card{background:var(--ww);border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s}
+    .tracker-card:hover,.tracker-card.active{border-color:var(--sf)}
+    .tracker-head{padding:.95rem 1.2rem;background:var(--parch);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bdr)}
+    .tracker-name{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:var(--ink)}
+    .tracker-count{font-size:.62rem;font-weight:700;color:var(--sf);background:var(--sf-faint);border:1px solid rgba(212,80,10,.12);padding:.16rem .52rem;border-radius:100px}
+    .tracker-items{padding:.7rem 1.2rem 1.2rem;display:none}.tracker-card.active .tracker-items{display:block}
+    .tracker-item-link{display:block;text-decoration:none;color:var(--ink);font-size:.78rem;line-height:1.5;padding:.52rem 0;border-bottom:1px solid var(--bdr);transition:color .15s}
+    .tracker-item-link:last-child{border-bottom:none}.tracker-item-link:hover{color:var(--sf)}
+    .tracker-item-src{font-size:.61rem;color:var(--muted2);margin-top:.12rem}
+    .tracker-empty{font-size:.78rem;color:var(--muted2);padding:.5rem 0;display:block}
+
+    /* SIDEBAR */
+    .sidebar-sticky{position:sticky;top:82px;display:flex;flex-direction:column;gap:1.2rem}
+    .scard{background:var(--ww);border:1.5px solid var(--bdr);border-radius:12px;overflow:hidden}
+    .scard-head{background:var(--ink2);padding:.88rem 1.2rem;font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.6rem}
+    .scard-head::before{content:'';display:block;width:3px;height:18px;background:linear-gradient(to bottom,var(--tri-s),var(--tri-g));border-radius:2px;flex-shrink:0}
+    .scard-head span{color:var(--sf2)}
+    .scard-body{padding:.95rem}
+    .sidebar-pillar-list{list-style:none;display:flex;flex-direction:column;gap:.12rem}
+    .spl-item{display:flex;justify-content:space-between;align-items:center;padding:.4rem .58rem;border-radius:6px;cursor:pointer;font-size:.78rem;color:var(--ink);transition:all .15s;font-weight:500}
+    .spl-item:hover{background:var(--parch)}.spl-item.active{background:var(--sf-faint);color:var(--sf)}
+    .spl-count{font-size:.61rem;background:var(--parch);padding:.1rem .42rem;border-radius:100px;color:var(--muted2);font-weight:600}
+    .spl-item.active .spl-count{background:var(--sf-faint);color:var(--sf)}
+    .news-updated-text{font-size:.68rem;color:var(--muted2);padding:.58rem 1.2rem;border-top:1px solid var(--bdr);background:var(--parch)}
+    .qlink{display:flex;justify-content:space-between;align-items:center;padding:.46rem .5rem;font-size:.78rem;color:var(--ink);text-decoration:none;border-radius:5px;transition:background .15s}
+    .qlink:hover{background:var(--parch);color:var(--sf)}.qlink-arrow{color:var(--muted2);font-size:.68rem}
+
+    /* CONTACT */
+    .contact-section{background:var(--navy2);padding:5.5rem 2.5rem;position:relative;overflow:hidden}
+    .contact-section::before{content:'संपर्क';position:absolute;right:-3rem;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:16rem;font-weight:900;line-height:1;pointer-events:none;opacity:.025;color:#fff}
+    .contact-inner{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;position:relative;z-index:2}
+    .contact-left h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:1.25rem;letter-spacing:-.02em}
+    .contact-left h2 em{font-style:italic;font-weight:400;color:var(--sf2)}
+    .contact-left p{font-size:.9rem;color:rgba(255,255,255,.48);line-height:1.8;margin-bottom:2.5rem}
+    .contact-info{display:flex;flex-direction:column;gap:1.2rem}
+    .ci-item{display:flex;align-items:flex-start;gap:.8rem}
+    .ci-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+    .ci-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sf2);display:block;margin-bottom:.18rem}
+    .ci-value{font-size:.875rem;color:rgba(255,255,255,.58);line-height:1.5;display:block}
+    .contact-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:2.25rem;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;overflow:hidden}
+    .contact-form::before{content:'';display:block;height:3px;margin:-2.25rem -2.25rem 2rem;background:linear-gradient(to right,var(--tri-s),rgba(255,255,255,.8),var(--tri-g));border-radius:14px 14px 0 0}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    .form-field{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1rem}
+    .form-field label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+    .form-field input,.form-field select,.form-field textarea{padding:.66rem .88rem;border:1px solid rgba(255,255,255,.1);border-radius:7px;background:rgba(255,255,255,.05);color:#fff;font-family:'DM Sans',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s}
+    .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.18)}
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--sf2)}
+    .form-field select option{background:#1a2a40;color:#fff}
+    .form-field textarea{resize:vertical;min-height:100px;line-height:1.65}
+    .form-submit{width:100%;padding:.85rem;background:linear-gradient(135deg,var(--sf),var(--sf2));color:#fff;border:none;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;letter-spacing:.03em;transition:all .2s;margin-top:.5rem;box-shadow:0 4px 20px rgba(212,80,10,.28)}
+    .form-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(212,80,10,.4)}.form-submit:disabled{opacity:.7;cursor:not-allowed}
+    .form-note{font-size:.65rem;color:rgba(255,255,255,.22);margin-top:.55rem;text-align:center}
+    .ohnohoney{opacity:0;position:absolute;top:0;left:0;height:0;width:0;z-index:-1}
+    .form-success{text-align:center;padding:2.5rem;color:#5eead4;font-size:.9rem;display:none;line-height:1.75}
+
+    /* FOOTER */
+    footer{background:var(--ink);padding:3rem 2.5rem 2rem;text-align:center}
+    .footer-tri{height:3px;width:80px;margin:0 auto 2rem;background:linear-gradient(to right,var(--tri-s) 33.3%,rgba(255,255,255,.8) 33.3%,rgba(255,255,255,.8) 66.6%,var(--tri-g) 66.6%);border-radius:2px}
+    .footer-brand{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+    .footer-brand span{color:var(--sf2)}
+    .footer-tagline{font-size:.7rem;color:rgba(255,255,255,.28);letter-spacing:.1em;margin-bottom:1.7rem}
+    .footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:1.7rem}
+    .footer-links a{font-size:.73rem;color:rgba(255,255,255,.32);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--sf2)}
+    .footer-copy{font-size:.68rem;color:rgba(255,255,255,.16)}
+
+    /* ANIM */
+    .fade-up{animation:fadeUp .35s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr}.hero-right{display:none}.hero-divider{display:none}
+      .main-layout{grid-template-columns:1fr}.sidebar-sticky{position:static}
+      .contact-inner{grid-template-columns:1fr;gap:3rem}
+      .featured-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}.hero-left{padding:8rem 1.5rem 4rem}
+      .news-grid{grid-template-columns:1fr}.trackers-grid{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}.feat-sides{flex-direction:column}
+    }
+    @media(max-width:480px){.section{padding:2.5rem 1.25rem}.main-layout{padding:2rem 1.25rem}.contact-section{padding:3.5rem 1.25rem}}
+  </style>
+</head>
+<body>
+
+<a href="#main" style="position:absolute;top:-40px;left:0;background:var(--sf);color:#fff;padding:.5rem 1rem;z-index:9999">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <span class="nav-tri-bar"></span>
+      <span>
+        <span class="nav-brand-main">Mission <span>India Ahead</span></span>
+        <span class="nav-brand-sub">अग्रसर भारत · Legal &amp; Policy Analysis</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#featured">Essays</a></li>
+      <li><a href="#main">Live News</a></li>
+      <li><a href="#main">Trackers</a></li>
+      <li><a href="#pillars-section">Pillars</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="live-badge"><span class="live-dot"></span>Live</div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="eyebrow-line"></span>अग्रसर भारत · Mission India Ahead<span class="eyebrow-line"></span></div>
+    <h1>Ideas that <em>shape</em><span class="sub">a civilisation</span></h1>
+    <p class="hero-desc">Rigorous legal analysis, original research, and grounded perspective across ten pillars of national renewal — updated every hour from India's leading publications.</p>
+    <div class="hero-cta">
+      <a class="btn-p" href="#featured">Read Essays →</a>
+      <a class="btn-g" href="#main">Live Developments</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-n" id="stat-articles">—</span><span class="stat-l">Essays</span></div>
+      <div class="stat"><span class="stat-n" id="stat-news">—</span><span class="stat-l">Live Stories</span></div>
+      <div class="stat"><span class="stat-n">10</span><span class="stat-l">Pillars</span></div>
+      <div class="stat"><span class="stat-n">8</span><span class="stat-l">Trackers</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="glow-s"></div>
+    <div class="glow-g"></div>
+    <div class="bharat-stage">
+      <div class="bharat-text" aria-hidden="true">भारत</div>
+      <div class="bharat-chakra"></div>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<div class="tri-rule"></div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker-track"><span class="ticker-item">Loading latest developments…</span></div>
+</div>
+
+<section class="featured-section section" id="featured">
+  <div class="section-inner">
+    <div class="section-head"><span class="section-label">Featured Essays</span><div class="section-rule"></div></div>
+    <div class="featured-grid" id="featured-grid"><div style="padding:2rem;color:var(--muted2)">Loading…</div></div>
+  </div>
+</section>
+
+<section class="pillars-section" id="pillars-section">
+  <div class="section-inner">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="section-label" style="color:rgba(255,255,255,.45)">Browse by Pillar</span>
+      <div class="section-rule" style="background:linear-gradient(to right,rgba(255,255,255,.1),transparent)"></div>
+    </div>
+    <div class="pillars-scroll" id="pillars-scroll"></div>
+  </div>
+</section>
+
+<div class="main-layout" id="main">
+  <div>
+    <div class="content-tabs">
+      <button class="tab-btn active" onclick="switchTab('essays')" id="tab-essays">📖 Essays</button>
+      <button class="tab-btn" onclick="switchTab('news')" id="tab-news">📡 Live News</button>
+      <button class="tab-btn" onclick="switchTab('trackers')" id="tab-trackers">📊 Trackers</button>
+    </div>
+    <div class="tab-panel active" id="panel-essays">
+      <div class="filter-pills" id="essay-pills"></div>
+      <div class="controls">
+        <input class="search-box" id="essay-search" type="text" placeholder="Search essays…"/>
+        <select class="sort-sel" id="essay-sort">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="shortest">Shortest Read</option>
+          <option value="longest">Longest Read</option>
+        </select>
+      </div>
+      <div class="essay-list" id="essay-list"><div class="no-results">Loading…</div></div>
+    </div>
+    <div class="tab-panel" id="panel-news">
+      <div class="filter-pills" id="news-pills"></div>
+      <div class="controls"><input class="search-box" id="news-search" type="text" placeholder="Search news…"/></div>
+      <div class="news-grid" id="news-grid"><div class="news-loading">⏳ Loading live developments…</div></div>
+      <button class="show-more-btn" id="news-more-btn" style="display:none" onclick="showMoreNews()">Show more stories →</button>
+    </div>
+    <div class="tab-panel" id="panel-trackers">
+      <p style="font-size:.85rem;color:var(--muted2);margin-bottom:1.5rem;line-height:1.7">Real-time tracking of key legal and policy topics — auto-tagged from live RSS feeds every hour.</p>
+      <div class="trackers-grid" id="trackers-grid"><div class="no-results">⏳ Loading trackers…</div></div>
+    </div>
+  </div>
+  <aside>
+    <div class="sidebar-sticky">
+      <div class="scard">
+        <div class="scard-head">Browse by <span>Pillar</span></div>
+        <div class="scard-body" style="padding:.55rem">
+          <ul class="sidebar-pillar-list" id="sidebar-pillars"></ul>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-head">Live <span>Status</span></div>
+        <div class="scard-body">
+          <p style="font-size:.77rem;color:var(--muted2);line-height:1.65;margin-bottom:.75rem">News feed refreshes every hour from 17 Indian publications.</p>
+          <div id="news-status" style="font-size:.73rem;color:var(--muted2)">Checking…</div>
+        </div>
+        <div class="news-updated-text" id="news-updated-text">Checking for updates…</div>
+      </div>
+      <div class="scard">
+        <div class="scard-head">Quick <span>Links</span></div>
+        <div class="scard-body" style="padding:.35rem .55rem">
+          <a class="qlink" href="https://www.livelaw.in" target="_blank">LiveLaw<span class="qlink-arrow">→</span></a>
+          <a class="qlink" href="https://www.barandbench.com" target="_blank">Bar &amp; Bench<span class="qlink-arrow">→</span></a>
+          <a class="qlink" href="https://verdictum.in" target="_blank">Verdictum<span class="qlink-arrow">→</span></a>
+          <a class="qlink" href="https://www.prsindia.org" target="_blank">PRS India<span class="qlink-arrow">→</span></a>
+          <a class="qlink" href="https://organiser.org" target="_blank">The Organiser<span class="qlink-arrow">→</span></a>
+          <a class="qlink" href="https://swarajyamag.com" target="_blank">Swarajya<span class="qlink-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <h2>Get in <em>touch</em></h2>
+      <p>For research collaborations, legal commentary, media queries, or to contribute an essay — write to us. All submissions are reviewed personally.</p>
+      <div class="contact-info">
+        <div class="ci-item"><span class="ci-icon">⚖️</span><div><span class="ci-label">Practice</span><span class="ci-value">Supreme Court of India &amp; Delhi High Court</span></div></div>
+        <div class="ci-item"><span class="ci-icon">📍</span><div><span class="ci-label">Office</span><span class="ci-value">N-1/B LGF, Jangpura Extension, New Delhi – 110 014</span></div></div>
+        <div class="ci-item"><span class="ci-icon">📧</span><div><span class="ci-label">Email</span><span class="ci-value">adityak.office@gmail.com</span></div></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
+        <input type="hidden" name="form-name" value="contact"/>
+        <p class="ohnohoney"><label>Don't fill this out: <input name="bot-field"/></label></p>
+        <div class="form-row">
+          <div class="form-field"><label for="f-name">Your Name *</label><input type="text" id="f-name" name="name" placeholder="Full name" required/></div>
+          <div class="form-field"><label for="f-email">Email *</label><input type="email" id="f-email" name="email" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="form-field"><label for="f-org">Organisation</label><input type="text" id="f-org" name="organisation" placeholder="Court / firm / institution (optional)"/></div>
+        <div class="form-field">
+          <label for="f-subject">Nature of Query *</label>
+          <select id="f-subject" name="subject" required>
+            <option value="">— Select —</option>
+            <option>Research Collaboration</option><option>Submit an Essay</option>
+            <option>Media / Press Query</option><option>Legal Commentary</option>
+            <option>Newsletter Subscription</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="f-message">Message *</label><textarea id="f-message" name="message" placeholder="Your message…" required></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-note">Your message goes directly to the team. We respond within 48 hours.</p>
+      </form>
+      <div class="form-success" id="form-success">🙏 Thank you! Your message has been received. We'll respond within 48 hours.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-tri"></div>
+  <div class="footer-brand">Mission <span>India Ahead</span></div>
+  <div class="footer-tagline">अग्रसर भारत · Ideas that shape a civilisation</div>
+  <ul class="footer-links">
+    <li><a href="#featured">Essays</a></li><li><a href="#main">News</a></li>
+    <li><a href="#main">Trackers</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© <span id="fy"></span> Mission India Ahead · New Delhi, India · All Rights Reserved</div>
+</footer>
+
+<script>
+const ARTICLES_URL='./articles.json',NEWS_URL='/api/news',REFRESH_MS=3600000;
+const PILLAR_META={'Law & Justice':{emoji:'⚖️'},'Policy & Governance':{emoji:'📋'},'Culture & Civilisation':{emoji:'🎨'},'Security & Strategy':{emoji:'🛡️'},'Technology':{emoji:'🔬'},'Education':{emoji:'🏫'},'Health':{emoji:'🌿'},'Economy':{emoji:'📈'},'Governance':{emoji:'🏛️'},'Environment & Ecology':{emoji:'🌳'}};
+const PUB_CLASS={'The Organiser':'pub-organiser','Verdictum':'pub-verdictum','The Print':'pub-print','The Lawstreet Journal':'pub-lawstreet'};
+let allArticles=[],allNews=[],activePillar='All',activeTab='essays',essaySearch='',essaySort='newest',newsSearch='',newsVisible=12;
+
+function switchTab(tab){activeTab=tab;document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.getElementById('tab-'+tab).classList.add('active');document.getElementById('panel-'+tab).classList.add('active');if(tab==='news'&&!allNews.length)loadNews();}
+
+async function loadArticles(){try{const res=await fetch(ARTICLES_URL+'?v='+Date.now());const data=await res.json();allArticles=data.articles;document.getElementById('stat-articles').textContent=allArticles.length;buildPillars();buildSidebarPillars();renderFeatured();renderEssays();buildTicker();}catch{document.getElementById('essay-list').innerHTML='<div class="no-results">⚠ Could not load articles.json</div>';}}
+
+async function loadNews(silent=false){try{const res=await fetch(NEWS_URL);if(!res.ok)throw new Error('not ready');const data=await res.json();allNews=data.all||[];document.getElementById('stat-news').textContent=allNews.length;const upd=new Date(data.lastUpdated);const ts=upd.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})+' · '+upd.toLocaleDateString('en-IN',{day:'numeric',month:'short'});document.getElementById('news-updated-text').textContent='Updated '+ts;document.getElementById('news-status').innerHTML='<span style="color:var(--gn2)">✓</span> '+allNews.length+' stories live';buildNewsPills();if(activeTab==='news')renderNews();renderTrackers(data.byTracker||{});updateTicker();}catch{document.getElementById('news-status').textContent='Feed populates hourly after first deploy';document.getElementById('news-updated-text').textContent='Not yet available';document.getElementById('news-grid').innerHTML='<div class="news-loading">📡 Live feed activates after first Netlify deploy. Runs hourly.</div>';renderTrackers({});}}
+
+function buildTicker(){const items=allArticles.slice(0,8).map(a=>`<span class="ticker-item">${a.title}</span>`).join('');document.getElementById('ticker-track').innerHTML=items+items;}
+function updateTicker(){if(!allNews.length)return;const items=allNews.slice(0,10).map(n=>`<span class="ticker-item">${n.title}</span>`).join('');document.getElementById('ticker-track').innerHTML=items+items;}
+
+function buildPillars(){const counts={};allArticles.forEach(a=>{counts[a.pillar]=(counts[a.pillar]||0)+1});const s=document.getElementById('pillars-scroll');s.innerHTML=`<div class="pillar-chip active" data-p="All" onclick="setPillar('All')"><span class="pc-emoji">🇮🇳</span><span class="pc-name">All</span><span class="pc-count">${allArticles.length}</span></div>`+Object.entries(PILLAR_META).map(([n,m])=>`<div class="pillar-chip" data-p="${n}" onclick="setPillar('${n}')"><span class="pc-emoji">${m.emoji}</span><span class="pc-name">${n}</span><span class="pc-count">${counts[n]||0}</span></div>`).join('');}
+
+function buildSidebarPillars(){const counts={All:allArticles.length};allArticles.forEach(a=>{counts[a.pillar]=(counts[a.pillar]||0)+1});document.getElementById('sidebar-pillars').innerHTML=['All',...Object.keys(PILLAR_META)].map(p=>`<li class="spl-item ${p==='All'?'active':''}" data-p="${p}" onclick="setPillar('${p}')"><span>${PILLAR_META[p]?PILLAR_META[p].emoji+' '+p:'🇮🇳 All'}</span><span class="spl-count">${counts[p]||0}</span></li>`).join('');}
+
+function setPillar(p){activePillar=p;document.querySelectorAll('.pillar-chip').forEach(c=>c.classList.toggle('active',c.dataset.p===p));document.querySelectorAll('.spl-item').forEach(i=>i.classList.toggle('active',i.dataset.p===p));document.querySelectorAll('.essay-pill').forEach(b=>b.classList.toggle('active',b.dataset.p===p));renderEssays();if(activeTab==='news')renderNews();document.getElementById('main').scrollIntoView({behavior:'smooth'});}
+
+function buildEssayPills(){const pillars=['All',...new Set(allArticles.map(a=>a.pillar))];document.getElementById('essay-pills').innerHTML=pillars.map(p=>`<button class="pill essay-pill ${p==='All'?'active':''}" data-p="${p}" onclick="setPillar('${p}')">${p}</button>`).join('');}
+function buildNewsPills(){const pillars=['All',...new Set(allNews.map(n=>n.pillar))];document.getElementById('news-pills').innerHTML=pillars.map(p=>`<button class="pill news-pill ${p==='All'?'active':''}" data-p="${p}" onclick="setNewsPillar('${p}')">${p}</button>`).join('');}
+function setNewsPillar(p){activePillar=p;document.querySelectorAll('.news-pill').forEach(b=>b.classList.toggle('active',b.dataset.p===p));newsVisible=12;renderNews();}
+
+function renderFeatured(){const top=[...allArticles].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,3);if(!top.length)return;const[m,s1,s2]=top;document.getElementById('featured-grid').innerHTML=`<a class="feat-main" href="${m.url}" target="_blank" rel="noopener"><div class="feat-tag">${m.pillar}</div><div class="ft">${m.title}</div><div class="fd">${m.summary}</div><div class="fm"><strong>${m.publication}</strong> · ${m.author} · ${m.readTime} min · ${fmt(m.date)}</div></a><div class="feat-sides">${[s1,s2].filter(Boolean).map(a=>`<a class="feat-side" href="${a.url}" target="_blank" rel="noopener"><div class="feat-tag">${a.pillar}</div><div class="ft">${a.title}</div><div class="fd">${a.summary}</div><div class="fm">${a.publication} · ${a.readTime} min · ${fmt(a.date)}</div></a>`).join('')}</div>`;}
+
+function renderEssays(){let arts=[...allArticles];if(activePillar!=='All')arts=arts.filter(a=>a.pillar===activePillar);if(essaySearch){const q=essaySearch.toLowerCase();arts=arts.filter(a=>(a.title+a.summary+a.author+a.publication).toLowerCase().includes(q));}if(essaySort==='newest')arts.sort((a,b)=>new Date(b.date)-new Date(a.date));if(essaySort==='oldest')arts.sort((a,b)=>new Date(a.date)-new Date(b.date));if(essaySort==='shortest')arts.sort((a,b)=>a.readTime-b.readTime);if(essaySort==='longest')arts.sort((a,b)=>b.readTime-a.readTime);const list=document.getElementById('essay-list');if(!arts.length){list.innerHTML='<div class="no-results">No essays match. Try a different filter.</div>';return;}list.innerHTML=arts.map((a,i)=>`<a class="essay-item fade-up" href="${a.url}" target="_blank" rel="noopener" style="animation-delay:${i*.025}s"><div class="ei-num">${String(i+1).padStart(2,'0')}</div><div><div class="ei-pillar">${a.pillar}</div><div class="ei-title">${a.title}</div><div class="ei-summary">${a.summary}</div><div class="ei-foot"><span class="pub-tag ${PUB_CLASS[a.publication]||'pub-default'}">${a.publication}</span><span class="ei-meta">${a.author}</span><span class="ei-meta">${a.readTime} min read</span><span class="ei-meta">${fmt(a.date)}</span></div></div></a>`).join('');buildEssayPills();}
+
+function renderNews(){let items=[...allNews];if(activePillar!=='All')items=items.filter(n=>n.pillar===activePillar);if(newsSearch){const q=newsSearch.toLowerCase();items=items.filter(n=>(n.title+n.description+n.source).toLowerCase().includes(q));}const grid=document.getElementById('news-grid');const moreBtn=document.getElementById('news-more-btn');if(!items.length){grid.innerHTML='<div class="news-loading">No stories for this filter yet.</div>';moreBtn.style.display='none';return;}grid.innerHTML=items.slice(0,newsVisible).map(n=>`<a class="news-card fade-up" href="${n.link}" target="_blank" rel="noopener"><span class="nc-source">${n.source}</span><span class="nc-title">${n.title}</span><span class="nc-desc">${n.description||''}</span>${n.trackers?.length?`<div class="nc-trackers">${n.trackers.map(t=>`<span class="nc-tracker">${t}</span>`).join('')}</div>`:''}<div class="nc-foot"><span class="nc-date">${fmtAge(n.pubDate)}</span><span class="nc-pillar">${n.pillar}</span></div></a>`).join('');moreBtn.style.display=items.length>newsVisible?'block':'none';}
+function showMoreNews(){newsVisible+=12;renderNews();}
+
+function renderTrackers(byTracker){const ICONS={'Human Rights':'🤝','Legislation':'📜','Judiciary':'⚖️','Constitution':'📗','Criminal Law':'🔍','Environment':'🌳','Economy':'📈','Security':'🛡️'};const grid=document.getElementById('trackers-grid');const trackers=Object.keys(ICONS);if(!Object.keys(byTracker).length){grid.innerHTML=trackers.map(t=>`<div class="tracker-card"><div class="tracker-head"><span class="tracker-name">${ICONS[t]} ${t}</span><span class="tracker-count">0</span></div><div class="tracker-items"><span class="tracker-empty">Populates after first hourly run</span></div></div>`).join('');return;}grid.innerHTML=trackers.map(t=>{const items=byTracker[t]||[];return`<div class="tracker-card" onclick="toggleTracker(this)"><div class="tracker-head"><span class="tracker-name">${ICONS[t]} ${t}</span><span class="tracker-count">${items.length}</span></div><div class="tracker-items">${items.length?items.slice(0,6).map(i=>`<a class="tracker-item-link" href="${i.link}" target="_blank" rel="noopener">${i.title}<div class="tracker-item-src">${i.source} · ${fmtAge(i.pubDate)}</div></a>`).join(''):'<span class="tracker-empty">No items yet</span>'}</div></div>`;}).join('');}
+function toggleTracker(el){el.classList.toggle('active')}
+
+function fmt(iso){return new Date(iso).toLocaleDateString('en-IN',{month:'short',year:'numeric'})}
+function fmtAge(iso){try{const d=new Date(iso),now=new Date(),diff=Math.floor((now-d)/60000);if(diff<60)return diff+'m ago';if(diff<1440)return Math.floor(diff/60)+'h ago';return d.toLocaleDateString('en-IN',{day:'numeric',month:'short'});}catch{return''}}
+
+async function handleFormSubmit(e){e.preventDefault();const form=e.target;const btn=form.querySelector('.form-submit');btn.textContent='Sending…';btn.disabled=true;try{await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});}catch(_){}form.style.display='none';document.getElementById('form-success').style.display='block';}
+
+document.getElementById('essay-search').addEventListener('input',e=>{essaySearch=e.target.value.trim();renderEssays()});
+document.getElementById('essay-sort').addEventListener('change',e=>{essaySort=e.target.value;renderEssays()});
+document.getElementById('news-search').addEventListener('input',e=>{newsSearch=e.target.value.trim();renderNews()});
+document.getElementById('fy').textContent=new Date().getFullYear();
+
+loadArticles();loadNews();
+setInterval(()=>{loadArticles();loadNews(true);},REFRESH_MS);
+</script>
+</body>
+</html>
